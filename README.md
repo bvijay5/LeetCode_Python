@@ -1,2 +1,3 @@
-# LeetCode_Python
-I starting leetcode
+# LeetCode Solutions
+
+This repository contains my solutions to various LeetCode problems using python.
