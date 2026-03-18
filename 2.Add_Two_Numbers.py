@@ -6,36 +6,32 @@ class ListNode(object):
 
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: Optional[ListNode]
+        :type l2: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+
+        l3 = ListNode()
+        n1 = l3
         carry = 0
-        n1 = l1
-        n2 = l2
+        while l1 or l2 or carry:
+            digit = 0
+            tot = carry
+            if l1 is not None:
+                tot += l1.val
+                l1 = l1.next
 
-        newNode = ListNode()
-        n3 = newNode
-        
-        while n1 or n2 or carry:
-            tot = 0
-            if n1 is not None:
-                tot += n1.val
-                n1 = n1.next
-
-            if n2 is not None:
-                tot += n2.val
-                n2 = n2.next
-
-            tot += carry
-
-            if tot>9:
-                carry = tot // 10
-            else:
-                carry = 0
+            if l2 is not None:
+                tot += l2.val
+                l2 = l2.next
 
             digit = tot % 10
+            carry = tot // 10
 
-
-            n3.next = ListNode(digit)
-            n3 = n3.next
+            newNode = ListNode(digit)
+            n1.next = newNode
+            n1 = n1.next
         
-        newNode = newNode.next
-
-        return newNode
+        l3 = l3.next
+        return l3
